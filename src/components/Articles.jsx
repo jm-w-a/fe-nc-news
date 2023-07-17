@@ -3,17 +3,21 @@ import { getArticles } from "../../api";
 import "../App.css";
 
 const Articles = () => {
-  const [topArticles, setTopArticles] = useState([]);
+
+    const [topArticles, setTopArticles] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         getArticles().then((articles) => {
             setTopArticles(articles);
+            setIsLoading(false);
         })
     }, [])
 
     return (
         <section className="articles">
         <h2>Articles</h2>
+        <p>{isLoading ? 'Loading...': null}</p>
         <ul className="articles-list">
             {topArticles.map(({article_id, article_img_url, author, comment_count, created_at, title, topic, votes}) => {
             return (
