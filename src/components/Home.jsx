@@ -3,9 +3,9 @@ import '../App.css'
 
 const Home = () => {
   return (
-    <header className="scroll-container header">
+    <section className="">
       <p>hi</p>
-    </header>
+    </section>
   );
 };
 
