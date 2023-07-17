@@ -1,0 +1,79 @@
+main{
+  background: var(--light);
+  color: var(--dark);
+  height: 80vh;
+}
+.nav-main{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  background: var(--dark);
+  height: 20vh;
+}
+.main-navlink{
+  color: var(--light);
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.main-navlink:hover:hover{
+  background: var(--light);
+  color: var(--dark);
+}
+h1{
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+h2{
+  background-color: var(--dark);
+  color: var(--light);
+  height: 7vh;
+  padding: 1rem;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+section{
+  height: 63vh;
+}
+.articles-list{
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  height: 63vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  background: var(--dark);
+}
+.article{
+  min-height: 25vh;
+  display: flex;
+}
+.article-description{
+  padding: 1rem;
+  width: 40vw;
+  background: var(--light-fade);
+}
+.article-img img{
+  width: 30vw;
+  height: 25vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: none;
+}
+.article-buttons{
+  width: 30vw;
+}
+.article-buttons button{
+  height: 100%;
+  width: 100%;
+  background-color: var(--dark);
+  color: var(--light);
+  border: none;
+}
+.article-buttons button:hover{
+  background-color: var(--light);
+  color: var(--dark);
+}

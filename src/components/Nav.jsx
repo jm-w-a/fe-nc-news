@@ -3,8 +3,8 @@ import '../App.css'
 
 const Nav = () => {
   return (
-    <nav className="nav-top">
-        <Link to="/" className="top-navlink">
+    <nav className="nav-main">
+        <Link to="/" className="main-navlink">
             Home
         </Link>
     </nav>

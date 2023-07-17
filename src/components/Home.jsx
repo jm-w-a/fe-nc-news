@@ -1,11 +1,13 @@
 import { Link } from 'react-router-dom'
 import '../App.css'
 
+import Articles from './Articles'
 const Home = () => {
   return (
-    <section className="">
-      <p>hi</p>
-    </section>
+    <main className="home">
+      <h1>NC-NEWS</h1>
+      <Articles />
+    </main>
   );
 };
 
