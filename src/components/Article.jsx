@@ -1,15 +1,16 @@
 import { useEffect, useState } from "react";
-import { getArticlesById } from '../../api'
+import { getArticleById } from '../../api'
 import { useParams } from 'react-router-dom';
 
 import "../App.css";
 
+import Comments from './Comments'
 const Article = () => {
   const { article_id } = useParams();
   const [currentArticle, setCurrentArticle] = useState([]);
 
   useEffect(() => {
-    getArticlesById(article_id).then((article) => {
+    getArticleById(article_id).then((article) => {
       setCurrentArticle(article);
     });
   }, [article_id]);
@@ -29,6 +30,7 @@ const Article = () => {
       <p>
         {currentArticle.body}
       </p>
+      <Comments />
     </section>
   );
 };
