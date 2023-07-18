@@ -72,6 +72,7 @@ section{
 }
 .articles-data p{
   padding: 1rem;
+  width: 50vw;
 }
 .articles-item a{
   display: flex;
@@ -95,7 +96,6 @@ section{
   color: var(--dark);
   display: flex;
   flex-direction: column;
-  overflow-y: scroll;
   height: 90vh;
 }
 .article-data{

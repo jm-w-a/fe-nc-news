@@ -3,7 +3,7 @@ import "./App";
 
 import Nav from "./components/Nav";
 import Home from "./components/pages/Home";
-import Article from "./components/pages/Article";
+import Article from "./components/Article";
 function App() {
   return (
     <div className="nc-news">
