@@ -7,7 +7,7 @@ main{
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   background: var(--dark);
-  height: 20vh;
+  height: 10vh;
 }
 .main-navlink{
   color: var(--light);
@@ -22,7 +22,7 @@ main{
   color: var(--dark);
 }
 h1{
-  height: 10vh;
+  min-height: 10vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -30,50 +30,77 @@ h1{
 h2{
   background-color: var(--dark);
   color: var(--light);
-  height: 7vh;
+  min-height: 7vh;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+h3{
+  background-color: var(--dark);
+  color: var(--light);
+  min-height: 7vh;
   padding: 1rem;
   display: flex;
   justify-content: left;
   align-items: center;
 }
 section{
-  height: 63vh;
+  height: 73vh;
+  overflow-x: none;
 }
 .articles-list{
   display: grid;
   grid-template-columns: repeat(1, 1fr);
-  height: 63vh;
+  height: 73vh;
   overflow-y: scroll;
   overflow-x: hidden;
   background: var(--dark);
 }
-.article{
-  min-height: 25vh;
+.articles-item{
+  background: var(--mid);
+}
+.articles-data{
+  height: 30vh;
   display: flex;
 }
-.article-description{
-  padding: 1rem;
-  width: 40vw;
-  background: var(--light-fade);
-}
-.article-img img{
-  width: 30vw;
-  height: 25vh;
-  background-size: cover;
+.articles-data img{
+  width: 50vw;
   background-position: center;
+  background-size: cover;
   background-repeat: none;
 }
-.article-buttons{
-  width: 30vw;
+.articles-data p{
+  padding: 1rem;
+  width: 50vw;
 }
-.article-buttons button{
-  height: 100%;
-  width: 100%;
-  background-color: var(--dark);
-  color: var(--light);
-  border: none;
-}
-.article-buttons button:hover{
-  background-color: var(--light);
+.articles-item a{
+  display: flex;
+  width: 100vw;
+  height: 5vh;
+  justify-content: center;
+  align-items: center;
   color: var(--dark);
+  background-color: var(--light);
+  text-decoration: none;
+}
+
+
+
+
+
+
+
+.current-article{
+  background: var(--light);
+  color: var(--dark);
+  display: flex;
+  flex-direction: column;
+  height: 90vh;
+}
+.article-data{
+  margin-bottom: 2rem;
+}
+.current-article p {
+  padding: 1rem;
 }

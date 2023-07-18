@@ -1,18 +1,19 @@
-import { Routes, Route } from 'react-router-dom'
-import './App.css'
+import { Routes, Route } from "react-router-dom";
+import "./App";
 
-import Nav from './components/Nav'
-import Home from './components/Home'
+import Nav from "./components/Nav";
+import Home from "./components/pages/Home";
+import Article from "./components/Article";
 function App() {
-
   return (
     <div className="nc-news">
-      <Routes>
-        <Route path="/" element={<Home />}/>
-      </Routes>
       <Nav />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/articles/:article_id" element={<Article />} />
+      </Routes>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
