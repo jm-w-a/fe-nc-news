@@ -1,11 +1,7 @@
-import { useState } from "react";
-
 import "../../App.css";
 
 import Articles from "../Articles";
-const Home = ({ setCurrentArticle }) => {
-  const [isLoading, setIsLoading] = useState(true);
-  
+const Home = ({ setCurrentArticle, isLoading, setIsLoading }) => {
   return (
     <main className="home">
       <h1>NC-NEWS</h1>

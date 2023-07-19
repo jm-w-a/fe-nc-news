@@ -99,7 +99,7 @@ section{
   color: var(--dark);
   display: flex;
   flex-direction: column;
-
+  overflow-y: scroll;
   height: 90vh;
 }
 .article-data{
