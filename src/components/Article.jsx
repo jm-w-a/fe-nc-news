@@ -7,8 +7,9 @@ import "../App.css";
 import Comments from './Comments'
 const Article = ({ isLoading, setIsLoading }) => {
   const { article_id } = useParams();
-  const [article, setArticle] = useState([]);
-
+  const [article, setArticle] = useState({});
+  const [hasVoted, setHasVoted] = useState(false);
+  const [isVoteError, setIsVoteError] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
@@ -19,10 +20,34 @@ const Article = ({ isLoading, setIsLoading }) => {
   }, [article_id]);
 
   const handelVoteOnClick = () => {
-    setArticle((currArticle)=>{
-      return {...currArticle, votes: ++currArticle.votes}
-    })
-    patchArticleVotes(article_id, {inc_votes: 1})
+    setIsVoteError(false)
+    if(hasVoted){
+      setArticle((currArticle)=>{
+        return {...currArticle, votes: --currArticle.votes}
+      })
+      patchArticleVotes(article_id, {inc_votes: -1}).catch(()=>{
+        console.log('test')
+        setHasVoted(true);
+        setIsVoteError(true);
+        setArticle((currArticle)=>{
+          return {...currArticle, votes: ++currArticle.votes}
+        })
+      })
+      setHasVoted(false)
+    }else{
+      setArticle((currArticle)=>{
+        return {...currArticle, votes: ++currArticle.votes}
+      })
+      patchArticleVotes(article_id, {inc_votes: 1}).catch(()=>{
+        console.log('test')
+        setHasVoted(false);
+        setIsVoteError(true);
+        setArticle((currArticle)=>{
+          return {...currArticle, votes: --currArticle.votes}
+        })
+      })
+      setHasVoted(true);
+    }
   }
 
   return (
@@ -30,6 +55,7 @@ const Article = ({ isLoading, setIsLoading }) => {
       <span>{isLoading ? "Loading..." : null}</span>
       <div className="article-data">
         <h3>{article.title}</h3>
+        <span>{isVoteError ? "Something went wrong. Please try again..." : null}</span>
         <p>
           <b>Topic:</b> {article.topic}
           <br />
@@ -37,7 +63,7 @@ const Article = ({ isLoading, setIsLoading }) => {
           <br />
           <b>Votes:</b> {article.votes}
         </p>
-        <button onClick={handelVoteOnClick}>Vote For This Article</button>
+        <button onClick={handelVoteOnClick}>{!hasVoted ? 'Vote For This Article': 'Undo'}</button>
       </div>
       <p>
         {article.body}
