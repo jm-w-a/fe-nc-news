@@ -14,7 +14,6 @@ const ArticleVote = ({ setArticle, hasVoted, setHasVoted, isVoteError, setIsVote
         return {...currArticle, votes: --currArticle.votes}
       })
       patchArticleVotes(article_id, {inc_votes: -1}).catch(()=>{
-        console.log('test')
         setHasVoted(true);
         setIsVoteError(true);
         setArticle((currArticle)=>{
@@ -27,7 +26,6 @@ const ArticleVote = ({ setArticle, hasVoted, setHasVoted, isVoteError, setIsVote
         return {...currArticle, votes: ++currArticle.votes}
       })
       patchArticleVotes(article_id, {inc_votes: 1}).catch(()=>{
-        console.log('test')
         setHasVoted(false);
         setIsVoteError(true);
         setArticle((currArticle)=>{

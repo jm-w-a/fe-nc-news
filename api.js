@@ -27,7 +27,6 @@ export const patchArticleVotes = (article_id, updatedValue) => {
     .patch(`/articles/${article_id}`, updatedValue)
     .then((res) => {
         const output = res.data;
-        console.log(output)
         return output;
     });
 };
