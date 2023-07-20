@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import "../App.css";
 
 import Comments from './Comments'
+import ArticleVote from './ArticleVote'
 const Article = ({ isLoading, setIsLoading }) => {
   const { article_id } = useParams();
   const [article, setArticle] = useState({});
@@ -19,37 +20,6 @@ const Article = ({ isLoading, setIsLoading }) => {
     });
   }, [article_id]);
 
-  const handelVoteOnClick = () => {
-    setIsVoteError(false)
-    if(hasVoted){
-      setArticle((currArticle)=>{
-        return {...currArticle, votes: --currArticle.votes}
-      })
-      patchArticleVotes(article_id, {inc_votes: -1}).catch(()=>{
-        console.log('test')
-        setHasVoted(true);
-        setIsVoteError(true);
-        setArticle((currArticle)=>{
-          return {...currArticle, votes: ++currArticle.votes}
-        })
-      })
-      setHasVoted(false)
-    }else{
-      setArticle((currArticle)=>{
-        return {...currArticle, votes: ++currArticle.votes}
-      })
-      patchArticleVotes(article_id, {inc_votes: 1}).catch(()=>{
-        console.log('test')
-        setHasVoted(false);
-        setIsVoteError(true);
-        setArticle((currArticle)=>{
-          return {...currArticle, votes: --currArticle.votes}
-        })
-      })
-      setHasVoted(true);
-    }
-  }
-
   return (
     <section className="current-article">
       <span>{isLoading ? "Loading..." : null}</span>
@@ -63,7 +33,7 @@ const Article = ({ isLoading, setIsLoading }) => {
           <br />
           <b>Votes:</b> {article.votes}
         </p>
-        <button onClick={handelVoteOnClick}>{!hasVoted ? 'Vote For This Article': 'Undo'}</button>
+        <ArticleVote setArticle={setArticle} hasVoted={hasVoted} setHasVoted={setHasVoted} isVoteError={isVoteError} setIsVoteError={setIsVoteError}/>
       </div>
       <p>
         {article.body}
