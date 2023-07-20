@@ -1,34 +1,39 @@
 import { useEffect, useState } from "react";
-import { getArticlesById } from '../../api'
+import { getArticleById } from '../../api'
 import { useParams } from 'react-router-dom';
 
 import "../App.css";
 
-const Article = () => {
+import Comments from './Comments'
+const Article = ({ isLoading, setIsLoading }) => {
   const { article_id } = useParams();
   const [currentArticle, setCurrentArticle] = useState([]);
 
   useEffect(() => {
-    getArticlesById(article_id).then((article) => {
+    setIsLoading(true);
+    getArticleById(article_id).then((article) => {
       setCurrentArticle(article);
+      setIsLoading(false);
     });
   }, [article_id]);
 
   return (
     <section className="current-article">
+      <span>{isLoading ? "Loading..." : null}</span>
       <div className="article-data">
         <h3>{currentArticle.title}</h3>
         <p>
-          {currentArticle.topic}
+          <b>Topic:</b> {currentArticle.topic}
           <br />
-          {currentArticle.author}
+          <b>Author:</b> {currentArticle.author}
           <br />
-          {currentArticle.votes}
+          <b>Votes:</b> {currentArticle.votes}
         </p>
       </div>
       <p>
         {currentArticle.body}
       </p>
+      <Comments isLoading={isLoading} setIsLoading={setIsLoading}/>
     </section>
   );
 };

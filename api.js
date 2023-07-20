@@ -10,9 +10,15 @@ export const getArticles = () => {
         return output
     })
 }
-export const getArticlesById = (article_id) => {
+export const getArticleById = (article_id) => {
     return ncNewsApi.get(`/articles/${article_id}`).then((res) => {
         const output = res.data.article
+        return output
+    })
+}
+export const getArticleComment = (article_id) => {
+    return ncNewsApi.get(`/articles/${article_id}/comments`).then((res) => {
+        const output = res.data.comments
         return output
     })
 }

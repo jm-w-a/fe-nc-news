@@ -18,7 +18,7 @@ const Articles = ({ isLoading, setIsLoading }) => {
   return (
     <section className="section-articles">
       <h2>Articles</h2>
-      <p>{isLoading ? "Loading..." : null}</p>
+      <span>{isLoading ? "Loading..." : null}</span>
       <ul className="articles-list">
         {topArticles.map(
           ({
@@ -45,11 +45,7 @@ const Articles = ({ isLoading, setIsLoading }) => {
                       <b>Votes:</b> {votes}
                     </p>
                   </div>
-                  <Link
-                    to={`/articles/${article_id}`}
-                  >
-                    View Article
-                  </Link>
+                  <Link to={`/articles/${article_id}`}>View Article</Link>
                 </article>
               </li>
             );

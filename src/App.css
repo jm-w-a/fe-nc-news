@@ -45,6 +45,15 @@ h3{
   justify-content: left;
   align-items: center;
 }
+h4{
+  background-color: var(--dark);
+  color: var(--light);
+  min-height: 7vh;
+  padding: 1rem;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
 section{
   height: 73vh;
   overflow-x: none;
@@ -85,17 +94,12 @@ section{
   text-decoration: none;
 }
 
-
-
-
-
-
-
 .current-article{
   background: var(--light);
   color: var(--dark);
   display: flex;
   flex-direction: column;
+  overflow-y: scroll;
   height: 90vh;
 }
 .article-data{
@@ -103,4 +107,22 @@ section{
 }
 .current-article p {
   padding: 1rem;
+}
+
+.comments ul{
+  height: 50vh;
+  overflow-y: scroll;
+}
+.comments li{
+  height: 100%;
+  padding: 1rem;
+  list-style: none;
+  padding: 1rem;
+  color: var(--dark);
+}
+.comments li p{
+  padding: 1rem 0%;
+}
+.article-comment:nth-child(even){
+  background: var(--mid);
 }
