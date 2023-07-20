@@ -17,6 +17,12 @@ const Article = ({ isLoading, setIsLoading }) => {
     });
   }, [article_id]);
 
+  const handelVoteOnClick = () => {
+    console.log('Before: ', currentArticle.votes)
+    currentArticle.votes++
+    console.log('After: ', currentArticle.votes)
+  }
+
   return (
     <section className="current-article">
       <span>{isLoading ? "Loading..." : null}</span>
@@ -29,6 +35,7 @@ const Article = ({ isLoading, setIsLoading }) => {
           <br />
           <b>Votes:</b> {currentArticle.votes}
         </p>
+        <button onClick={handelVoteOnClick}>Vote For This Article</button>
       </div>
       <p>
         {currentArticle.body}
