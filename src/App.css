@@ -73,15 +73,22 @@ section{
   height: 30vh;
   display: flex;
 }
+.articles-data p{
+  padding: 1rem;
+  width: 100%;
+}
 .articles-data img{
   width: 50vw;
   background-position: center;
   background-size: cover;
   background-repeat: none;
 }
-.articles-data p{
-  padding: 1rem;
-  width: 50vw;
+.article-data button{
+  background: var(--dark);
+  color: var(--light);
+  padding: .7rem 1rem;
+  margin-left: .8rem;
+  border: none;
 }
 .articles-item a{
   display: flex;

@@ -7,7 +7,7 @@ import "../App.css";
 const Comments = ({ isLoading, setIsLoading }) => {
   const { article_id } = useParams();
   const [currentComments, setCurrentComments] = useState([]);
-  const [isError, setIsError] = useState(false)
+  const [isCommentError, setIsCommentError] = useState(false)
 
   useEffect(() => {
     setIsLoading(true);
@@ -15,7 +15,7 @@ const Comments = ({ isLoading, setIsLoading }) => {
       setCurrentComments(comments);
       setIsLoading(false);
     }).catch((err)=>{
-        setIsError(true)
+      setIsCommentError(true)
     })
   }, [article_id]);
 
@@ -24,7 +24,7 @@ const Comments = ({ isLoading, setIsLoading }) => {
       <h4>comments</h4>
       <span>{isLoading ? "Loading..." : null}</span>
       <ul>
-        {isError ? (
+        {isCommentError ? (
           <p>Nothing here... Be the first to comment!</p>
         ) : (
           currentComments.map(
