@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getArticleById } from '../../api'
+import { getArticleById, patchArticleVotes } from '../../api'
 import { useParams } from 'react-router-dom';
 
 import "../App.css";
@@ -7,38 +7,40 @@ import "../App.css";
 import Comments from './Comments'
 const Article = ({ isLoading, setIsLoading }) => {
   const { article_id } = useParams();
-  const [currentArticle, setCurrentArticle] = useState([]);
+  const [article, setArticle] = useState([]);
+
 
   useEffect(() => {
     setIsLoading(true);
     getArticleById(article_id).then((article) => {
-      setCurrentArticle(article);
+      setArticle(article);
       setIsLoading(false);
     });
   }, [article_id]);
 
   const handelVoteOnClick = () => {
-    console.log('Before: ', currentArticle.votes)
-    currentArticle.votes++
-    console.log('After: ', currentArticle.votes)
+    setArticle((currArticle)=>{
+      return {...currArticle, votes: ++currArticle.votes}
+    })
+    patchArticleVotes(article_id, {inc_votes: 1})
   }
 
   return (
     <section className="current-article">
       <span>{isLoading ? "Loading..." : null}</span>
       <div className="article-data">
-        <h3>{currentArticle.title}</h3>
+        <h3>{article.title}</h3>
         <p>
-          <b>Topic:</b> {currentArticle.topic}
+          <b>Topic:</b> {article.topic}
           <br />
-          <b>Author:</b> {currentArticle.author}
+          <b>Author:</b> {article.author}
           <br />
-          <b>Votes:</b> {currentArticle.votes}
+          <b>Votes:</b> {article.votes}
         </p>
         <button onClick={handelVoteOnClick}>Vote For This Article</button>
       </div>
       <p>
-        {currentArticle.body}
+        {article.body}
       </p>
       <Comments isLoading={isLoading} setIsLoading={setIsLoading}/>
     </section>

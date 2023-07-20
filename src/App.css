@@ -73,6 +73,10 @@ section{
   height: 30vh;
   display: flex;
 }
+.articles-data p{
+  padding: 1rem;
+  width: 100%;
+}
 .articles-data img{
   width: 50vw;
   background-position: center;
