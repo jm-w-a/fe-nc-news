@@ -30,3 +30,12 @@ export const patchArticleVotes = (article_id, updatedValue) => {
         return output;
     });
 };
+export const postComment = (article_id, postObject) => {
+    return ncNewsApi
+      .post(`/articles/${article_id}/comments`, postObject)
+      .then((res) => {
+        const output = res.data;
+        console.log(output)
+        return output;
+    });
+  };
