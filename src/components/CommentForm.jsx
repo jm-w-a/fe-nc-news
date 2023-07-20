@@ -26,12 +26,5 @@ function CommentForm({ setPostedComment }) {
         </form>
     );
 }
-// <textarea rows="5" cols="60" name="text" placeholder="Enter text"></textarea>
-export default CommentForm;
 
-// "comment_id": 89,
-// "body": "Esse et expedita harum non. Voluptatibus commodi voluptatem. Minima velit suscipit numquam ea. Id vitae debitis aut incidunt odio quo quam possimus ipsum.",
-// "article_id": 1,
-// "author": "cooljmessy",
-// "votes": 2,
-// "created_at": "2020-10-24T07:08:00.000Z"
+export default CommentForm;
