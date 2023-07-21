@@ -9,30 +9,32 @@ const Comments = ({ isLoading, setIsLoading }) => {
   const { article_id } = useParams();
   const [currentComments, setCurrentComments] = useState([]);
   const [isCommentError, setIsCommentError] = useState(false);
-  const [postedComment, setPostedComment] = useState({})
-  const [postCommentLoading, setPostCommentLoading] = useState(false)
+  const [postedComment, setPostedComment] = useState({});
+  const [postCommentLoading, setPostCommentLoading] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
-    getArticleComment(article_id).then((comments) => {
-      if(postedComment.length === 0){
-        setCurrentComments(postedComment, ...comments);
-        setPostCommentLoading(true);
-      } else {
-        setCurrentComments(comments);
-      }
-      setIsLoading(false);
-      setPostCommentLoading(false);
-    }).catch((err)=>{
-      setIsCommentError(true)
-    })
+    getArticleComment(article_id)
+      .then((comments) => {
+        if (postedComment.length === 0) {
+          setCurrentComments(postedComment, ...comments);
+          setPostCommentLoading(true);
+        } else {
+          setCurrentComments(comments);
+        }
+        setIsLoading(false);
+        setPostCommentLoading(false);
+      })
+      .catch((err) => {
+        setIsCommentError(true);
+      });
   }, [postedComment]);
 
   return (
     <section className="comments">
       <h4>Comments Section</h4>
       <span>{isLoading ? "Loading..." : null}</span>
-      <CommentForm setPostedComment={setPostedComment}/>
+      <CommentForm setPostedComment={setPostedComment} />
       <ul>
         {isCommentError ? (
           <p>Nothing here... Be the first to comment!</p>
