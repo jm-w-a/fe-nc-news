@@ -9,44 +9,53 @@ function CommentForm({ setPostedComment }) {
   const [commentBody, setCommentBody] = useState("");
   const [userName, setUserName] = useState("tickle122");
   const [isCommentDisable, setIsCommentDisabled] = useState(false);
-  const [isCommentError, setIsCommentError] = useState(false)
+  const [isCommentError, setIsCommentError] = useState(false);
 
   const postObject = { body: commentBody, username: userName };
 
   const handleSellSubmit = (event) => {
     event.preventDefault();
-    setIsCommentDisabled(true);
-    postComment(article_id, postObject).then((returnedComment) => {
-      setIsCommentError(false)
-        if(returnedComment){
-            setPostedComment(returnedComment)
+    postComment(article_id, postObject)
+      .then((returnedComment) => {
+        setIsCommentError(false);
+        if (returnedComment) {
+          setIsCommentDisabled(true);
+          setPostedComment(returnedComment);
+          setIsCommentDisabled(false);
         }
-      }).catch((err)=>{
-        setIsCommentError(true)
+      })
+      .catch((err) => {
+        setIsCommentError(true);
+        setIsCommentDisabled(false);
       });
-    setCommentBody('');
-    setIsCommentDisabled(false);
+    setCommentBody("");
   };
 
   return (
-    <form onSubmit={handleSellSubmit}>
-      <span className="red-error">{isCommentError ? 'Cannot process your request, please try again...': null}</span>
-      <label htmlFor="comment-body"></label>
-      <textarea
-        value={commentBody}
-        rows={5}
-        cols={33}
-        required
-        id="comment-body"
-        type="text"
-        name="comment-body"
-        placeholder="Your comment here..."
-        onChange={(event) => {
-          setCommentBody(event.target.value);
-        }}
-      ></textarea>
-      <button disabled={isCommentDisable}>Submit</button>
-    </form>
+    <div>
+      <span className="red-error">
+        {isCommentError
+          ? "Cannot process your request, please try again..."
+          : null}
+      </span>
+      <form onSubmit={handleSellSubmit}>
+        <label htmlFor="comment-body"></label>
+        <textarea
+          value={commentBody}
+          rows={5}
+          cols={33}
+          required
+          id="comment-body"
+          type="text"
+          name="comment-body"
+          placeholder="Your comment here..."
+          onChange={(event) => {
+            setCommentBody(event.target.value);
+          }}
+        ></textarea>
+        <button disabled={isCommentDisable}>Submit</button>
+      </form>
+    </div>
   );
 }
 

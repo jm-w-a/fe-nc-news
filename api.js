@@ -35,7 +35,6 @@ export const postComment = (article_id, postObject) => {
     .post(`/articles/${article_id}/comments`, postObject)
     .then((res) => {
       const output = res.data;
-      console.log(output);
       return output;
     });
 };
