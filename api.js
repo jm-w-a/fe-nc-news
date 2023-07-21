@@ -26,7 +26,15 @@ export const patchArticleVotes = (article_id, updatedValue) => {
   return ncNewsApi
     .patch(`/articles/${article_id}`, updatedValue)
     .then((res) => {
-        const output = res.data;
-        return output;
+      const output = res.data;
+      return output;
+    });
+};
+export const postComment = (article_id, postObject) => {
+  return ncNewsApi
+    .post(`/articles/${article_id}/comments`, postObject)
+    .then((res) => {
+      const output = res.data;
+      return output;
     });
 };

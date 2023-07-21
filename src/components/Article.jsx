@@ -25,7 +25,6 @@ const Article = ({ isLoading, setIsLoading }) => {
       <span>{isLoading ? "Loading..." : null}</span>
       <div className="article-data">
         <h3>{article.title}</h3>
-        <span>{isVoteError ? "Something went wrong. Please try again..." : null}</span>
         <p>
           <b>Topic:</b> {article.topic}
           <br />
@@ -38,6 +37,7 @@ const Article = ({ isLoading, setIsLoading }) => {
       <p>
         {article.body}
       </p>
+      <span className="red-error">{isVoteError ? "Something went wrong. Please try again..." : null}</span>
       <Comments isLoading={isLoading} setIsLoading={setIsLoading}/>
     </section>
   );
